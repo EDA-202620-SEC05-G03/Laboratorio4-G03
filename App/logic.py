@@ -31,7 +31,7 @@ from DataStructures.List import array_list as lt
 from DataStructures.Queue import queue as q
 from DataStructures.Stack import stack as st
 
-data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/'
+data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/GoodReads'
 
 """
 El controlador se encarga de mediar entre la vista y el modelo.
@@ -134,7 +134,7 @@ def get_books_stack_by_user(catalog, user_id):
     books_to_read = catalog['books_to_read']
     for pos in range(lt.size(books_to_read)):
         entry = lt.get_element(books_to_read, pos)
-        if entry['user_id'] == user_id:
+        if entry['user_id'] == str(user_id):
             st.push(books_stack, entry['book_id'])
     
     return books_stack
@@ -149,7 +149,7 @@ def get_user_position_on_queue(catalog, user_id, book_id):
     books_to_read = catalog['books_to_read']
     for pos in range(lt.size(books_to_read)):
         entry = lt.get_element(books_to_read, pos)
-        if entry['book_id'] == book_id:
+        if entry['book_id'] == str(book_id):
             q.enqueue(queue, entry)
     
     position = 0
@@ -157,7 +157,7 @@ def get_user_position_on_queue(catalog, user_id, book_id):
     for pos in range(lt.size(queue)):
         entry = lt.get_element(queue, pos)
         position += 1
-        if entry['user_id'] == user_id:
+        if entry['user_id'] == str(user_id):
             found = True
             break
             
