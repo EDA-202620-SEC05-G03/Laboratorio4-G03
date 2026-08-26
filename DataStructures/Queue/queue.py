@@ -7,6 +7,8 @@ def enqueue(my_queue, element):
     return lt.add_last(my_queue, element)
 
 def dequeue(my_queue):
+    if size(my_queue) == 0:
+        raise Exception('EmptyStructureError: queue is empty')
     return lt.remove_first(my_queue)
 
 def peek(my_queue):
